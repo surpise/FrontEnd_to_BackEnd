@@ -1,8 +1,8 @@
 const express = require('express')
-const mysql = require('mysql')
+const mysql = require('mysql') 
 const path = require('path')
 const static = require('serve-static')
-const dbconfig = require('./confing/dbconfig.json')
+const dbconfig = require('./config/dbconfig.json')
 
 //database connection pool
 const pool = mysql.createPool({
