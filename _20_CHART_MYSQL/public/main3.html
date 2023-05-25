@@ -8,23 +8,32 @@
             <canvas id="myChart" width="400" height="320"></canvas>
         </div>
         <div>
+            <label>빌딩이름</label>
+            <input type="text" id="buildingid">
             <button id="chartdatafromdb">그래프 그리기</button>
         </div>
     </body>
     <script>
+        let myChart = undefined
         const btn = document.getElementById('chartdatafromdb')
+        const bid = document.getElementById('buildingid')
         btn.addEventListener('click', ()=>{
+            // 입력된 building id를 추출한다
+            console.log('building id : %s', bid.value)
             // svr에 데이터를 요청하고, 데이터를 받아서 그래프를 그린다.
-            chartDataFromDB();
+            chartDataFromDB(bid.value);
         })
 
-        const chartDataFromDB = ()=>{
+        const chartDataFromDB = (bid)=>{
             // 서버에 데이터 요청
-            fetch('/chartdatafromdb', {
+            fetch('/chartdatafromdb_elec', {
                 method : 'post',
                 headers : {
                     'content-type' : 'application/json'
-                }
+                },
+                body : JSON.stringify({
+                    'bid':bid
+                })
             }).then((res)=>res.json())
             .then((res)=>{
                 //받아온 데이터(res)를 가지고, 그래프를 그린다
@@ -48,7 +57,7 @@
                 const data = {
                     labels: reg_date_obj,
                     datasets: [{
-                        label: '온도',
+                        label: '전기사용량',
                         borderColor: 'rgb(255, 99, 132)',
                         data: temp_obj
                     }]
@@ -62,7 +71,10 @@
                     }
                 }
                 // 진짜로 그래프 그리기
-                const myChart = new Chart(document.getElementById('myChart'), config)
+                if(myChart !== undefined){
+                    myChart.destroy()
+                }
+                myChart = new Chart(document.getElementById('myChart'), config)
             })
         }
     </script>
