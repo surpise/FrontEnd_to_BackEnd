@@ -1,0 +1,100 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div>
+            <h1 id="count_down"></h1>
+        </div>
+        <script>
+            // 배열
+            // 1. fill --> 채운다
+            const a = Array(10).fill(0)
+            console.log(a)
+            
+            // 2. map   ---> [1, 2, 3, 4, ...., 10]
+            const b = a.map((_elem, _idx)=>{return _idx + 1})
+            console.log("a is: " + a)
+            console.log("b is: " + b)
+
+            // 3. sort
+            const c = [45, 33, 22, 11, 7, 99]
+            console.log("c is: " + c)
+
+            c.sort((a, b)=>{
+                if(a < b) {
+                    return -1; // negative
+                }
+                else if(a > b){
+                    return 1; // positive
+                }
+                else{
+                    return 0; // zero
+                }
+            })
+            console.log("after sorting c is: " + c)
+
+            // 4. 복사본 만들어서 sort  --> slice()
+            // [1, 2, 3]
+            // slice(1) --> [2, 3]
+            // slice(0, 1) --> [1]
+            // slice() --> 전체 복사
+
+            const d = [45, 33, 22, 11, 7, 99]
+            const sd = d.slice().sort((a, b) => a - b)
+            const sdd = d.slice().sort((a, b) => b - a)
+            console.log("after sorting d is: " + d)
+            console.log("sd: " + sd)
+            console.log("sdd: " + sdd)
+
+            // 5. 문자열 정렬
+            // const e = ["banana", "apple", "orange"]
+            //const e = ["호박", "수박", "사과", "포도"]
+            const e = ["호박", "수박", "사과", "포도", "banana", "apple", "orange"]
+            //const se = e.slice().sort((a, b)=>{return (a < b) ? -1:(a > b) ? 1:0})
+            //const se = e.slice().sort((a, b)=>(a < b) ? -1:(a > b) ? 1:0)
+            const se = e.slice().sort((a, b)=>a.localeCompare(b))
+
+            console.log("e: " + e)
+            console.log("se: " + se)
+
+            // 6. localeCompare
+            const E = ["abc", "Abc", "포도", "zac", "Zac"]
+            const sE1 = E.slice().sort((a,b)=>(a<b)?-1:(a>b)?1:0)
+            const sE2 = E.slice().sort((a, b)=>a.localeCompare(b,{"sensitivity":"base"}))
+
+            console.log("E : " + E)
+            console.log("sE1 : " + sE1)
+            console.log("sE2 : " + sE2)
+
+            // 7. setTimeout setInterval
+
+            // setTimeout : 일정 시간 후에 실행
+            
+            const hello = ()=>{console.log("안녕")}
+            // setTimeout(hello, 3000) // 밀리세컨드, 1/1000초 후에 실행
+            // setTimeout(()=>{console.log("화살함수, 안녕")}, 3000)
+
+            //setInterval : 일정 주기로 실행
+            // clearInterval : 주기함수를 종료
+            // _id = setInterval()
+            // clearInterval(_id)
+            
+            // const _id = setInterval(hello, 1000)
+            // setTimeout(()=>{
+            //     clearInterval(_id);
+            //     console.log("clearInterval 호출되었음");
+            // }, 5000)
+            let timer = 10
+            const _id = setInterval(()=>{
+                const cp_h1 = document.querySelector("#count_down")
+                cp_h1.textContent = timer
+                timer = timer - 1
+                if(timer < 0){
+                    clearInterval(_id)
+                    cp_h1.textContent = "Done"
+                }
+            }, 1000)
+            
+        </script>
+    </body>
+</html>

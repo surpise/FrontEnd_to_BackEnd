@@ -1,0 +1,91 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            // 복사
+            /*
+            let a = 1
+            let b = a
+            b = 10
+    
+            console.log(`a is ${a}`)
+            console.log(`b is ${b}`)
+            */
+
+            // 참조
+            // object : key, value
+            // obj ref
+            /*
+            const a = {"name":"alice", "age":20}
+            let b = a // ref
+            const c = {"name":"john", "age":21}
+
+            console.log("before     ", a)
+            //b["name"] = "tom"
+            b.name = "tom"
+            b = c;
+            console.log("after      ", a)
+            */
+
+            // arr ref
+            /*
+            const a = [1, 2, 3]
+            const b = a // ref
+            console.log("before      ", a)
+            b[1] = 200
+            console.log("after       ", a)
+            a.forEach((v, idx)=>{
+                console.log(`${idx} : ${v}`)
+            })
+            */
+
+            // obj, arr copy
+            /*
+            const a = [1, 2, 3]
+            const b = [...a] //copy
+            b[1] = 200
+            console.log(a)
+            */
+
+            /*
+            const a = {
+                name : "john",
+                "age" : 20,
+                address : {
+                    city: "incheon",
+                    street: 10
+                }
+            }
+            console.log("a : ", a.name, a["age"], a.address.city, a.address.street)
+            //const b = Object.assign({}, a) // <--- shallow copy
+            // 단, obj 안의 obj의 경우 primitive 데이터 타입이 아니므로 참조해옴 <- shallow copy
+            
+            const b = JSON.parse(JSON.stringify(a))  // <--- deep copy
+            // stringify -> obj를 json이 표현하는 문자열 형태로 변경
+            // parse -> json 형태를 다시 obj 형태로 변경
+
+            b.name = "alice"
+            b.address.city = "seoul"
+            console.log("after: --------------")
+            console.log("a : ", a.name, a["age"], a.address.city, a.address.street)
+            console.log("b : ", b.name, b["age"], b.address.city, b.address.street)
+            */
+
+            const a = ["alice", 20, {city:"incheon", strre:10}]
+            console.log("before: --------------")
+            console.log(a[0], a[1], a[2].city, a[2].street)
+            
+            //const b = [...a] // <-- shallow copy
+            const b = JSON.parse(JSON.stringify(a)) // <-- deep copy
+            b[0] = "john"
+            b[1] = 20000
+            b[2].city = "seoul"
+            b[2].street = 555
+            console.log("after: --------------")
+            console.log(a[0], a[1], a[2].city, a[2].street)
+            console.log(b[0], b[1], b[2].city, b[2].street)
+      
+        </script>
+    </body>
+</html>

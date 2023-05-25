@@ -1,0 +1,132 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1 id = 'grade'></h1>
+
+        <script>
+
+            const myArray = [1, 2, 'apple', 'banana', 3.14, true];
+
+            // 추가하기, push() 뒤에서, unshift() 앞에서
+            console.log('before: ' + myArray);
+            myArray.unshift('orange');
+            console.log('after: ' + myArray);
+
+            // console.log('before: ' + myArray);
+            // myArray.push('orange');
+            // console.log('after: ' + myArray);
+
+            // console.log('before: ' + myArray);
+            // const value = myArray.shift();
+            // console.log('shift : ' + value);
+            // console.log('after: ' + myArray);
+
+            //지우기. pop() 뒤에서, shift () 앞에서
+            // console.log('before: ' + myArray);
+            // const value = myArray.pop();
+            // console.log('pop : ' + value);
+            // console.log('after: ' + myArray);
+
+            // const myArray = [1, [3.14, true, 'banana', 10], 'apple'];
+            // for ( let i = 0; i < myArray[1].length; i++)
+            // {
+            //     console.log(myArray[1][i]);
+            // }
+            // console.log('myArray length: ' + myArray.length);
+            // console.log(myArray);
+
+            // array in array
+            // const myArray = [1, [3.14, true, 'banana', 10], 'apple'];
+            // console.log('myArray length: ' + myArray.length);
+            // console.log(myArray);
+
+            // for, while
+            // const num = parseInt(prompt());
+            // let msg = '';
+            // let i = 0;
+
+            // while(true)
+            // {
+            //     msg += 'hello '
+            //     i += 1;
+            //     if( i>= num)
+            //     {
+            //         break;
+            //     }
+            // }
+
+            // while(i < num)
+            // {
+            //     msg += 'hello ';
+            //     i += 1;
+            // }
+
+            // document.querySelector('h1#grade').textContent = msg;
+            // for(let i = 0; i<num;i++)
+            // {
+            //     msg+='hello ';
+            // }
+            // document.querySelector('h1#grade').textContent = msg;
+
+
+            // const score = parseInt(prompt());
+
+            // // 삼항연산자
+            // // 50 --> pass, otherwise --> fail
+            // const msg = (score >= 50) ? 'pass' : 'fail';
+            // document.querySelector('h1#grade').textContent = msg;
+
+            //switch
+            // switch (score){
+            //     case 100:
+            //         document.querySelector('h1#grade').textContent = '완벽';
+            //         break;
+            //     case 90:
+            //         document.querySelector('h1#grade').textContent = '충분';
+            //         break;
+            //     default:
+            //         document.querySelector('h1#grade').textContent = '나머지';
+            //         break;
+            // }
+
+            // if(score >= 90){
+            //     document.querySelector('h1#grade').textContent = 'A';
+            // }
+            // else if(score >= 80){
+            //     document.querySelector('h1#grade').textContent = 'B';
+            // }
+            // else{
+            //     document.querySelector('h1#grade').textContent = 'C';
+            // }
+            // undefined ,null
+            // let k;
+            // console.log('k is: '+k); // ---> undefined, 초기화가 되지 않았음.
+
+            // let x = null; // 초기화했지만, null값을 넣었음.
+            // console.log('x is: '+x);
+
+            // ==, ===
+            // console.log('1 == 1: ' + (1 == 1))
+            // console.log('\'1\' == 1: ' + ('1' == 1));
+            // console.log('1 === 1: ' + (1 === 1))
+            // console.log('\'1\' === 1: ' + ('1' === 1));
+
+            // !=, !==
+            // console.log('1 != 1: ' + (1 != 1))
+            // console.log('\'1\' != 1: ' + ('1' != 1));
+            // console.log('1 !== 1: ' + (1 !== 1))
+            // console.log('\'1\' !== 1: ' + ('1' !== 1));
+
+            // <, >, <=, >=, 문자열 비교, 사전순
+            // console.log('ack < abk :' +('ack' < 'abk'));
+            // console.log('apple < banana : ' +('apple' < 'banana'));
+
+            // let k = true;
+            // k = false;
+            // console.log('k : ' +k);
+            // console.log('k type: ' + typeof(k));
+
+        </script>
+    </body>
+</html>

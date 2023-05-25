@@ -1,0 +1,67 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            // object
+            // -----> class : create object
+            'use strict' // <- javascript에서 에러를 그냥 넘기는 것을 다 잡아 줌
+            
+            class Person {
+                constructor(_name, _age){
+                    this.name = _name
+                    this.age = _age
+                }
+
+                add_city_info(_city){
+                    this.city = _city
+                }
+
+                show_info(){
+                    console.log(`${this.name} is ${this.age} yrs old. He(She) lives in ${this.city}`)
+                }
+
+                is_older_than(value){
+                    if(this.age > value){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+            }
+
+            class Student extends Person {
+                // c++는 다중상속 가능, 하지만 자바스크립트는 불가능
+                constructor(_name, _age, _dream) {
+                    super(_name, _age)
+                    this.dream = _dream
+                }
+
+                show_info(){
+                    super.show_info()
+                    console.log(`His(Her) dream is ${this.dream}`)
+                }
+            }
+
+            const p = new Person('jim', 20)
+            p.add_city_info('seoul')
+            const q = new Person('jane', 21)
+            q.add_city_info('pusan')
+
+            p.show_info()
+            console.log(`${p.name} is older than 19?`)
+            console.log(p.is_older_than(19))
+
+            q.show_info()
+            console.log(`${q.name} is older than 19?`)
+            console.log(q.is_older_than(19))
+
+            const s = new Student('tom', 19, 'pilot')
+            s.add_city_info('incheon')
+            s.show_info()
+
+        </script>
+    </body>
+</html>

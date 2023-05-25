@@ -1,0 +1,59 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1 id='h11'>여기입니다.</h1>
+        <h1 id = 'h12'>요기일까?</h1>
+        <h1 id = 'h13'>여긴가?</h1>
+        <script>
+            
+            const userMsg = prompt(); // 사용자 입력 : prompt()
+            const userNumber = parseInt(userMsg); // 사용자 입력 문자열 --> 정수
+            const result = userNumber % 2;
+
+            let msg = "";
+            if(result == 1){
+                msg = userMsg +"는 홀수입니다."
+            }
+            else{
+                msg = userMsg+"는 짝수입니다."
+            }
+            document.querySelector('h1#h11').textContent = msg;
+            //console.log('사용자가 입력한 메시지는 ' + userMsg); // debugging 용도
+            // document.querySelector('h1#h13').textContent = userMsg;
+
+            //const allh1 = document.querySelectorAll('h1')
+            //allh1.forEach((elem, index) => { elem.textContent = userMsg });
+            // 변수, variable
+            // const : 한 번 대입하면, 변경불가
+            // let   : 일반 변수
+            
+            // let a = 10;
+            // let b = 20;
+            // let c = a+b;
+            // const d = a*10;
+            // // 제곱
+            // const e = 2 ** 3; // 2의 3승
+
+            // '123' + 5 --> 123 + 5 ---> 128
+            // 문자열을 숫자로 바꿔주는 함수.. parseInt(문자열)--> 정수
+            // parseInt('123') // '123' ---> 123
+            //console.log('parseInt의 결과1는 : ' + (parseInt('123')+5));
+            //console.log('parseInt의 결과2는 : ' + parseInt('123')+5);
+
+            //console.log('string concat의 문자열 더하기 숫자 결과는 '+('123'+5));
+            
+            // 2. typeof --> 자료형 이름
+            // + : string을 연결해서 붙이는 연산자. string concatenation operator
+            //console.log('hello의 자료형은 ' + typeof("hello")); // string
+            //console.log('4의 자료형은 ' + typeof(4)); // number
+            //console.log('3.14의 자료형은 ' + typeof(3.14)); // number
+
+            // 1. 출력 --> chrome --> 개발자도구 --> console
+            // console.log("이것은 자바스크립트입니다.");
+            //console.log('이것은\n 자바스크립트입니다. by quotation mark');
+            // console.log(`이것은 자바스크립트입니다. 
+            // by backtick`); 
+        </script>
+    </body>
+</html>

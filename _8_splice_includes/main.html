@@ -1,0 +1,103 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1 id='grade'>
+        </h1>
+        <script>
+            
+            const myArray = [1, 2, 'apple', 'banana', 3.14, 'apple', true, false, 2, 'apple'];
+
+            // 1.배열에 포함된 모든 사과를 제거하시오..
+
+            // console.log('with apple: ' + myArray);
+
+            // while(true)
+            // {
+            //     let _idx = myArray.indexOf('apple');
+            //     // 탈출 조건
+            //     if(_idx < 0)
+            //     {
+            //         break;
+            //     }
+            //     // 찾은 apple 지우기
+            //     myArray.splice(_idx, 1);
+            // }
+            // console.log('Without apple: ' + myArray);
+
+            // 2. 배열에 포함된 사과는 몇 개?
+            
+            let cnt = 0;
+
+            for(let i = 0; i < myArray.length; i++)
+            {
+                if(myArray[i] === 'apple')
+                {
+                    cnt += 1;
+                }
+            }
+            // let _idx = 0;
+            // while(true)
+            // {
+            //     _idx = myArray.indexOf('apple', _idx);
+            //     if (_idx < 0)
+            //     {
+            //         break;
+            //     }         
+            //     cnt += 1;
+            //     _idx += 1;       
+            // }
+            console.log('사과 개수는: ' + cnt);
+
+            // lastIndexOf('apple', fromindex)
+            // console.log('Apple이 있냐? ' + myArray.lastIndexOf('apple')); // 9
+            // console.log('Apple이 있냐? ' + myArray.lastIndexOf('apple', 8)); // 5
+            // console.log('Apple이 있냐? ' + myArray.lastIndexOf('apple', 1)); // -1
+
+            // indexOf('apple', fromIndex)
+            // console.log('Apple이 있냐? ' + myArray.indexOf('apple', 0)); // 2
+            // console.log('Apple이 있냐? ' + myArray.indexOf('apple', 3)); // -1
+            // console.log('Apple이 있냐? ' + myArray.indexOf('apple', 2)); // 2
+
+            // indexOf: 있으면 해당 index, 없으면 -1
+            // console.log('Apple이 있냐? ' + myArray.indexOf('apple')); // 2
+            // console.log('Orange 있냐? ' + myArray.indexOf('orange')); // -1
+
+            // includes
+            // console.log('Apple이 있냐? ' + myArray.includes('apple'));
+            // console.log('Orange 있냐? ' + myArray.includes('orange'));
+
+            // if (myArray.includes('apple') === true)
+            // {
+            //     console.log('apple 있음.');
+            // }
+            // else
+            // {
+            //     console.log('apple 없음');
+            // }
+
+            // 삭제
+            // myArray.splice(1, 1); // 1번 인덱스로부터, 1개를 삭제
+            // myArray.splice(1, 2);
+            // myArray.splice(1);
+
+            // 삭제 후 추가
+            // myArray.splice(1, 1, 'orange', 'melon');
+
+            // 단순 추가
+            // myArray.splice(1, 0, 'orange'); 
+            // myArray.splice(1, 0, 'orange', 'melon');
+
+            // unshift
+            // myArray.splice(0, 0, 'orange');
+            // myArray.unshift('orange');
+            
+            // push
+            myArray.splice(myArray.length, 0, 'orange');
+            myArray.push('orange');
+
+            console.log(myArray);
+
+        </script>
+    </body>
+</html>

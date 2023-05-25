@@ -1,0 +1,75 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="outside">
+            <input type="checkbox" id="i1">
+            <label for="">운동</label>
+            <input type="checkbox" id="i2">
+            <label for="">쇼핑</label>
+            <input type="checkbox" id="i3">
+            <label for="">식사</label>
+            <input type="checkbox" id="i4">
+            <label for="">수면</label>
+        </div>
+        <script>
+
+            // event delegation, 이벤트 위임
+            const cp_div = document.querySelector("#outside")
+            cp_div.addEventListener("click", (event)=>{
+                if(event.target.id == "i1"){
+                    console.log("운동")
+                }
+                else if(event.target.id == "i2"){
+                    console.log("쇼핑")
+                }
+                else if(event.target.id == "i3"){
+                    console.log("식사")
+                }
+                else if(event.target.id == "i4"){
+                    console.log("수면")
+                }
+            })
+
+            cp_div.addEventListener("click", (event)=>{
+                console.log("div event 처리")
+            })
+            
+            // const inputs = document.querySelectorAll("input");
+            // inputs.forEach((_ip, _idx)=>{
+            //     // bubble phase에 수행되는 listener
+            //     _ip.addEventListener("click", (event)=>{
+            //         console.log(_idx + " bubble phase: input click event 발생")
+            //         // event.stopPropagation()
+            //         event.stopImmediatePropagation()
+            //     })  
+
+            //     // capture phase에 수행되는 listener
+            //     _ip.addEventListener("click", ()=>{
+            //         console.log(_idx + " capture phase: input click event 발생")
+            //     }, true)  
+            // })
+
+            // inputs.forEach((_ip, _idx)=>{
+            //     // bubble phase 수행되는 listener
+            //     _ip.addEventListener("click", ()=>{
+            //         console.log(_idx + " 두번째 bubble phase event 발생")
+            //     })
+            // })
+
+            // // div에 대한 event listener 설정
+            // const divs = document.querySelectorAll("div")
+            // divs.forEach((_dv, _idx)=>{
+            //     _dv.addEventListener("click", ()=>{
+            //         console.log(_idx + " bubble phase: div에 대한 event 발생")
+            //     })
+
+            //     _dv.addEventListener("click", ()=>{
+            //         console.log(_idx + " capture phase: div에 대한 event 발생")
+            //     }, true)
+            // })
+
+        </script>
+    </body>
+</html>
