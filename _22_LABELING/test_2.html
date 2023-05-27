@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/fabric@4.6.0/dist/fabric.min.js"></script>
+        
+        <title>Fabricjs 테스트</title>
+    </head>
+    <body>
+        <div>
+            <canvas id="c" width="500" height="500" tabindex="1"></canvas>
+        </div>
+        <div>
+            <button id="savebtn">저장하기</button>
+        </div>
+        <script>
+
+            const canvas = new fabric.Canvas('c')
+
+            // 이미지를 불러서 background로 설정
+            fabric.Image.fromURL('dog.jpg', (img)=>{
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                    scaleX: canvas.width / img.width,
+                    scaleY: canvas.height / img.height
+                })
+            })
+
+            let isDown = false // Mouse가 눌렸는지 추적하는 함수
+            let ox, oy
+            let rect
+            // Mouse가 click 되었을 때의 event 처리
+            canvas.on('mouse:down', (o)=>{
+
+                if(o.target){
+                    return
+                }
+
+                isDown = true
+
+                const pointer = canvas.getPointer(o.e)
+                ox = pointer.x
+                oy = pointer.y
+
+                rect = new fabric.Rect({
+                    originX: 'left',
+                    orightY: 'top',
+                    left: ox,
+                    top: oy,
+                    width: pointer.x - ox,
+                    height: pointer.y - oy,
+                    angle: 0,
+                    fill: 'rgb(255, 0, 0, 0.5)',
+                    transparentConers: false
+                })
+                rect.setControlsVisibility({mtr:false}) // 사각형 회전에 대한 control을 보이지 않도록 설정
+                canvas.add(rect)
+            })
+
+            // Mouse가 움직일 때의 event 처리
+            canvas.on('mouse:move', (o)=>{
+                if(!isDown){
+                    return
+                }
+                // drag 상태 일때만, 사각형 크기 조절
+                const pointer = canvas.getPointer(o.e)
+                if (ox > pointer.x){
+                    rect.set({
+                        left:pointer.x
+                    })
+                }
+                if(oy > pointer.y){
+                    rect.set({
+                        top:pointer.y
+                    })
+                }
+
+                rect.set({
+                    width: Math.abs(ox - pointer.x),
+                    height: Math.abs(oy - pointer.y)
+                })
+
+                canvas.renderAll()
+            })
+
+            // Mouse가 unclick 되었을 때의 event 처리
+            canvas.on('mouse:up', (o)=>{
+                if(rect){
+                    if(rect.width < 30 || rect.height < 30){
+                        canvas.remove(rect)
+                    }
+                }
+
+                isDown = false
+                rect = undefined
+            })
+
+            document.onkeydown = (e)=>{
+                switch(e.keyCode){
+                    case 46: //delete
+                    canvas.remove(canvas.getActiveObject())
+                    break;
+                }
+                canvas.renderAll()
+            }
+
+            document.getElementById('savebtn').addEventListener('click', ()=>{
+                const objects = canvas.getObjects('rect')
+                objects.forEach((object)=>{
+                    console.log(`BBox 정보: ${Object.keys(object)}`)
+                    console.log(`left: ${object.left} top: ${object.top} width: ${object.width} height: {object.height}`)
+                })
+            })
+        </script>
+    </body>
+</html>
