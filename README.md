@@ -1,1 +1,5 @@
-## HTML/CSS/JS/NODEJS/MYSQL에 대해서 공부
+## FrontEnd_to_BackEnd
+
+- FrontEnd - HTML/CSS/JavaScript
+- BackEnd  - node.js
+- Database - MySQL
